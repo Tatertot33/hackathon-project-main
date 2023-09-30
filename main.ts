@@ -198,7 +198,7 @@ function makeDay2() {
 
 function makeDay3() {
     scene.setBackgroundImage(assets.image`moon`);
-    story.printDialog("Your last meal was delicious and felt extremely satisfying. You feel healthier and more energized, but you can't help the feeling there was something you're still missing… You go to a new market in hopes to escape Connie and her wacky friends.", 80, 90, 50, 150);
+    story.printDialog("Your last meal was delicious and felt extremely satisfying. You feel healthier and more energized, but you can't help the feeling there was something you're still missing... You go to a new market in hopes to escape Connie and her wacky friends.", 80, 90, 50, 150);
     story.printDialog(userName +": I seemingly ate all the food groups? Why do I feel like there's still something missing...", 80, 90, 50, 150);
     story.printDialog("(The hairs on your skin stand up as you start hearing the flapping of wings again. When will you escape the tiny bat's grasp? You thought you were free when you learned all the major food groups. How much longer must you stay in this never ending cycle?)", 80, 90, 50, 150);
     connie = sprites.create(assets.image`forestBat`);
@@ -264,6 +264,7 @@ function makeDay3() {
 function menu() {
     scene.setBackgroundImage(assets.image`lilypads`);
     game.splash("Day at the Farmer's Market", "Learning to eat healthy!");
+    music.stopAllSounds()
     userName = game.askForString("What is your name?");
 }
 
@@ -279,12 +280,15 @@ let userName: string;
 music.play(music.stringPlayable("C5 A B A G A B G ", 120), music.PlaybackMode.LoopingInBackground)
 menu();
 scene.setBackgroundImage(assets.image`lilypads`);
+music.play(music.stringPlayable("G B A G C5 B A B ", 110), music.PlaybackMode.UntilDone)
 story.printDialog("Day 1", 135, 75, 50, 150);
 makeDay1();
 scene.setBackgroundImage(assets.image`lilypads`);
+music.play(music.stringPlayable("G B A G C5 B A B ", 110), music.PlaybackMode.UntilDone)
 story.printDialog("Day 2", 135, 75, 50, 150);
 makeDay2();
 scene.setBackgroundImage(assets.image`lilypads`);
+music.play(music.stringPlayable("G B A G C5 B A B ", 110), music.PlaybackMode.UntilDone)
 story.printDialog("Day 3", 135, 75, 50, 150);
 makeDay3();
 
