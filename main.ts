@@ -114,10 +114,28 @@ function fruitChoice(first: Boolean) {
         story.printDialog("Connie: You are extremely ungrateful.", 80, 90, 50, 150);
         story.printDialog(userName +": Sorry.", 80, 90, 50, 150);
     }
+    sprites.destroy(apple);
+    connie.setPosition(80, 45);
     if(first) {
         story.printDialog("Connie: Would you like to learn about protein now?", 80, 90, 50, 150);
         story.showPlayerChoices("Yes", "Yes");
     }
+}
+
+function dairyChoice() {
+    story.printDialog("Connie: Dairy, more specifically.", 80, 90, 50, 150);
+    story.showPlayerChoices("Is this when milk splashes on my face and tells me about his benefits?", "I'm lactose intolerant");
+    if (story.checkLastAnswer("Is this when milk splashes on my face and tells me about his benefits?")) {
+        story.printDialog("(You notice some weird stares from the people around you. Why do they keep doing that?)", 80, 90, 50, 150);
+        story.printDialog("Connie: What is wrong with you milk can't talk.", 80, 90, 50, 150);
+        story.printDialog(userName + ": Oh, sorry I thought we were going with the usual bit.", 80, 90, 50, 150);
+        story.printDialog("Connie: What are you talking about?", 80, 90, 50, 150);
+        story.printDialog(userName + ": Oh I thought-", 80, 90, 50, 150);
+        story.printDialog("Connie: Don't. Anyways, dairy provides calcium, an important mineral that is essential to bone health!", 80, 90, 50, 150);
+    }
+    story.printDialog("Connie: Fortified soy milk is a great option for those that choose not to consume dairy products or are lactose intolerant. The nutrition content in fortified soymilk is extremely similar to other dairy products! The vitamin D and phosphorus that both dairy and fortified soy milk provide are also vital in bone building.", 80, 90, 50, 150);
+    story.printDialog(userName + ": Thank you, that was very informative.", 80, 90, 50, 150);
+    story.printDialog("Connie: It feels good to be appreciated.", 80, 90, 50, 150);
 }
 
 function makeDay1() {
@@ -143,12 +161,16 @@ function makeDay1() {
     story.printDialog("Connie: You buy something!", 80, 90, 50, 150);
     story.printDialog(userName +": Okay... I guess I'll take some carrots and a loaf of bread.", 80, 90, 50, 150);
     story.printDialog("Connie: Sounds good! Bye, "+ userName +"!", 80, 90, 50, 150);
+    sprites.destroy(connie);
 }
 
 function makeDay2() {
     scene.setBackgroundImage(assets.image`forest2`);
     story.printDialog("(After learning the importance of grains and vegetables in a healthy diet, you ate your dinner and still felt hungry and unsatisfied. You go to a new market because the last one was weird and you're definitely normal.)", 80, 90, 50, 150);
     story.printDialog("(You start shaking after hearing the flapping of wings approaching you.)", 80, 90, 50, 150);
+    connie = sprites.create(assets.image`forestBat`);
+    scaling.scaleToPercent(connie, 300, ScaleDirection.Uniformly, ScaleAnchor.Middle);
+    connie.setPosition(80, 45);
     story.printDialog("Connie: Hello, "+ userName +"! It's good to see you again. How was the meal that you prepared with carrots and bread?", 80, 90, 50, 150);
     story.printDialog(userName +": Unfulfilling and boring.", 80, 90, 50, 150);
     story.printDialog("Connie: Well that's because you didn't finish your plate of healthy food silly!", 80, 90, 50, 150);
@@ -171,6 +193,7 @@ function makeDay2() {
     story.printDialog(userName +": If I buy more food do I get to leave?", 80, 90, 50, 150);
     story.printDialog("Connie: Yes!", 80, 90, 50, 150);
     story.printDialog("(You buy assorted veggies, a loaf of bread, ham, and an apple and notice that the cashier is looking at you like you're crazy. You're definitely not crazy though.)", 80, 90, 50, 150);
+    sprites.destroy(connie);
 }
 
 function makeDay3() {
@@ -178,6 +201,9 @@ function makeDay3() {
     story.printDialog("Your last meal was delicious and felt extremely satisfying. You feel healthier and more energized, but you can't help the feeling there was something you're still missing… You go to a new market in hopes to escape Connie and her wacky friends.", 80, 90, 50, 150);
     story.printDialog(userName +": I seemingly ate all the food groups? Why do I feel like there's still something missing...", 80, 90, 50, 150);
     story.printDialog("(The hairs on your skin stand up as you start hearing the flapping of wings again. When will you escape the tiny bat's grasp? You thought you were free when you learned all the major food groups. How much longer must you stay in this never ending cycle?)", 80, 90, 50, 150);
+    connie = sprites.create(assets.image`forestBat`);
+    scaling.scaleToPercent(connie, 300, ScaleDirection.Uniformly, ScaleAnchor.Middle);
+    connie.setPosition(80, 45);
     story.printDialog("Connie: Grocery shopping again so soon?", 80, 90, 50, 150);
     story.printDialog(userName +": Yes, I felt like there was something missing in my diet.", 80, 90, 50, 150);
     story.printDialog("Connie: Because you were.", 80, 90, 50, 150);
@@ -186,8 +212,53 @@ function makeDay3() {
     story.printDialog(userName +": What do you mean?", 80, 90, 50, 150);
     story.printDialog("Connie: You're missing a nice cold glass of milk!", 80, 90, 50, 150);
     story.printDialog(userName +": Milk?", 80, 90, 50, 150);
-    story.printDialog("Connie: Dairy, more specifically.", 80, 90, 50, 150);
-    story.showPlayerChoices("Is this when milk splashes on my face and tells me about his benefits?", "I'm lactose intolerant");
+    dairyChoice();
+    story.printDialog(userName +": Connie, how do I make a balanced meal with all food groups?", 80, 90, 50, 150);
+    story.printDialog("Connie: I'm glad you asked. Let's get all of our food friends out here!", 80, 90, 50, 150);
+    sprites.destroy(connie);
+
+    carrot = sprites.create(assets.image`carrot`);
+    scaling.scaleToPercent(carrot, 200, ScaleDirection.Uniformly, ScaleAnchor.Middle);
+    carrot.setPosition(30, 45);
+
+    bread = sprites.create(assets.image`bread`);
+    scaling.scaleToPercent(bread, 200, ScaleDirection.Uniformly, ScaleAnchor.Middle);
+    bread.setPosition(60, 45);
+
+    ham = sprites.create(assets.image`bigHam`);
+    scaling.scaleToPercent(ham, 200, ScaleDirection.Uniformly, ScaleAnchor.Middle);
+    ham.setPosition(105, 45);
+
+    apple = sprites.create(assets.image`apple`);
+    scaling.scaleToPercent(apple, 200, ScaleDirection.Uniformly, ScaleAnchor.Middle);
+    apple.setPosition(140, 45);
+
+    story.printDialog("Everyfood: Hello " + userName + ".", 80, 90, 50, 150);
+    story.printDialog("Connie: Now, friends, merge into the ultimate food item!", 80, 90, 50, 150);
+    sprites.destroy(carrot);
+    sprites.destroy(bread);
+    sprites.destroy(ham);
+    sprites.destroy(apple);
+    scene.setBackgroundImage(assets.image`flash`);
+    story.printDialog("(A bright flash appears. You're momentarily blinded. The lights die down and you see a burger.)", 80, 90, 50, 150);
+    scene.setBackgroundImage(assets.image`moon`);
+    connie = sprites.create(assets.image`forestBat`);
+    scaling.scaleToPercent(connie, 200, ScaleDirection.Uniformly, ScaleAnchor.Middle);
+    connie.setPosition(50, 45);
+    burger = sprites.create(assets.image`bigBurger`);
+    scaling.scaleToPercent(burger, 300, ScaleDirection.Uniformly, ScaleAnchor.Middle);
+    burger.setPosition(110, 45);
+    story.printDialog("Burger: please eat me. there is nothing for me in this realm.", 80, 90, 50, 150);
+    story.printDialog("Connie: Oh Burger! You always light up the room with your peppy and energetic personality! Tell "+ userName +" about yourself!", 80, 90, 50, 150);
+    story.printDialog("Burger: my whole grain bun provides the grain for a balanced diet. my grass fed beef is packed with protein. my tomatoes and lettuce are filled with vital vitamins and minerals that fruits and vegetables provide. finally, my cheese is dairy, and will give your body essential nutrients to build your bones. please eat me.", 80, 90, 50, 150);
+    story.printDialog(userName +": This feels kinda wrong to eat you.", 80, 90, 50, 150);
+    story.printDialog("Connie: Oh he won't mind!", 80, 90, 50, 150);
+    story.printDialog("Burger: please.", 80, 90, 50, 150);
+    sprites.destroy(connie);
+    sprites.destroy(burger);
+    scene.setBackgroundImage(assets.image`flash`);
+    story.setPagePauseLength(5000, 5000);
+    story.printDialog("You grab the burger and eat it. You are enlightened, finally eating every food group needed for a balanced and healthy diet in one bite. The vitamins and minerals course through your veins and you reach your full potential. Finally, you wake up in an all white room, alone.", 80, 101, 200, 150);
 }
 
 function menu() {
@@ -205,6 +276,7 @@ let ham: Sprite;
 let connie: Sprite;
 let userName: string;
 
+music.play(music.stringPlayable("C5 A B A G A B G ", 120), music.PlaybackMode.LoopingInBackground)
 menu();
 scene.setBackgroundImage(assets.image`lilypads`);
 story.printDialog("Day 1", 135, 75, 50, 150);
