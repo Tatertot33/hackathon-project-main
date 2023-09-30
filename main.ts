@@ -269,7 +269,6 @@ function menu() {
 }
 
 let burger: Sprite;
-let cheese: Sprite;
 let carrot: Sprite;
 let bread: Sprite;
 let apple: Sprite;
