@@ -62,8 +62,67 @@ function grainChoice(first: Boolean) {
     }
 }
 
+function proteinChoice(first: Boolean) {
+    story.printDialog("Connie: Okay! Let's bring out our friend, Ham, to tell us all about protein!", 80, 90, 50, 150);
+    ham = sprites.create(assets.image`bigHam`);
+    scaling.scaleToPercent(ham, 300, ScaleDirection.Uniformly, ScaleAnchor.Middle);
+    ham.setPosition(110, 45);
+    connie.setPosition(50, 45);
+    story.printDialog("Ham: HI THERE! I AM HAM!", 80, 90, 50, 150);
+    story.printDialog(userName +": Why are you yelling?", 80, 90, 50, 150);
+    story.printDialog("Connie: Ham just likes to do that.", 80, 90, 50, 150);
+    story.printDialog("Ham: PROTEIN IS FOUND IN DIFFERENT MEATS AND SEAFOOD BUT ARE NOT EXCLUSIVE TO THOSE FOOD ITEMS. NUTS, BEANS, LENTILS, SEEDS, SOY PRODUCTS, AND EVEN PEAS ALL CONTAIN PROTEIN!", 80, 90, 50, 150);
+    story.printDialog("Connie: Ham, tell "+ userName +" why proteins are so important for a balanced meal.", 80, 90, 50, 150);
+    story.printDialog("Ham: PROTEINS ARE MADE OF AMINO ACIDS. YOUR BODY NEEDS AMINO ACIDS FOR A VARIETY OF REASONS, LIKE REPAIRING MUSCLES AND BONES. YOUR BODY EVEN USES AMINO ACIDS TO MAKE NECESSARY HORMONES THAT YOUR BODY NEEDS TO LIVE AND FUNCTION!", 80, 90, 50, 150);
+    story.printDialog("Connie: Thank you so much Ham! That was extremely informative and energetic!", 80, 90, 50, 150);
+    story.printDialog("Ham: IT WAS MY PLEASURE.", 80, 90, 50, 150);
+    sprites.destroy(ham);
+    connie.setPosition(80, 45);
+    if(first) {
+        story.printDialog("Connie: Would you like to hear about fruits now, "+ userName +"?", 80, 90, 50, 150);
+        story.showPlayerChoices("Yes", "No");
+        if(story.checkLastAnswer("No")) {
+            story.printDialog("Connie: When are you going to learn your decisions are meaningless?", 80, 90, 50, 150);
+            story.printDialog(userName +": Sorry. I will learn about fruits then.", 80, 90, 50, 150);
+        }
+    }
+}
+
+function fruitChoice(first: Boolean) {
+    story.printDialog("Connie: Amazing! Let's bring out Apple to teach you about the wonders of fruit.", 80, 90, 50, 150);
+    apple = sprites.create(assets.image`apple`);
+    scaling.scaleToPercent(apple, 300, ScaleDirection.Uniformly, ScaleAnchor.Middle);
+    apple.setPosition(110, 45);
+    connie.setPosition(50, 45);
+    story.printDialog("Apple: Hiya! I heard you wanted to learn about fruit.", 80, 90, 50, 150);
+    story.printDialog(userName +": I guess.", 80, 90, 50, 150);
+    story.printDialog("Apple: I love your enthusiasm! Fruits are vital in any healthy diet. Do you know why?", 80, 90, 50, 150);
+    story.showPlayerChoices("Yes", "No")
+    if(story.checkLastAnswer("Yes")) {
+        story.printDialog("Apple: No you don't!", 80, 90, 50, 150);
+    } else {
+        story.printDialog("Apple: Well that's why I'm here!", 80, 90, 50, 150);
+    }
+    story.printDialog("Apple: I'm going to teach you about fruits!", 80, 90, 50, 150);
+    story.printDialog("Connie: Can you stop talking and start teaching?", 80, 90, 50, 150);
+    story.printDialog("Apple: I was literally about to get there. Anyways, fruits provide a plethora of important nutrients like fiber, vitamin C, and potassium. These vitamins and minerals help your body lower blood pressure, and the risk of many diseases and health problems!", 80, 90, 50, 150);
+    story.printDialog("Connie: Thank you Apple! That was extremely engaging, I'm sure "+ userName +" really enjoyed that!", 80, 90, 50, 150);
+    story.showPlayerChoices("I did.", "I did not.");
+    if(story.checkLastAnswer("I did.")) {
+        story.printDialog("Connie: Great!", 80, 90, 50, 150);
+    } else {
+        story.printDialog("Connie: You are extremely ungrateful.", 80, 90, 50, 150);
+        story.printDialog(userName +": Sorry.", 80, 90, 50, 150);
+    }
+    if(first) {
+        story.printDialog("Connie: Would you like to learn about protein now?", 80, 90, 50, 150);
+        story.showPlayerChoices("Yes", "Yes");
+    }
+}
+
 function makeDay1() {
-    story.printDialog("(You're at your local farmers market thats weirdly in a forest, you need fresh produce for a healthy meal)", 80, 90, 50, 150);
+    scene.setBackgroundImage(assets.image`cityscape`);
+    story.printDialog("(You're at your local farmers market that's weirdly in a forest, you need fresh produce for a healthy meal)", 80, 90, 50, 150);
     story.printDialog(userName +": All of these fresh produce options are so confusing... Where do I start with my balanced meal!?", 80, 90, 50, 150);
     story.printDialog("(You hear the flapping of wings approaching)", 80, 90, 50, 150);
     connie = sprites.create(assets.image`forestBat`);
@@ -80,18 +139,55 @@ function makeDay1() {
         grainChoice(true);
         vegetableChoice(false);
     }
-    story.printDialog(userName + ": This was very… informative thank you. Um, how do I leave?", 80, 90, 50, 150);
+    story.printDialog(userName + ": This was very... informative thank you. Um, how do I leave?", 80, 90, 50, 150);
     story.printDialog("Connie: You buy something!", 80, 90, 50, 150);
     story.printDialog(userName +": Okay... I guess I'll take some carrots and a loaf of bread.", 80, 90, 50, 150);
     story.printDialog("Connie: Sounds good! Bye, "+ userName +"!", 80, 90, 50, 150);
 }
 
 function makeDay2() {
-
+    scene.setBackgroundImage(assets.image`forest2`);
+    story.printDialog("(After learning the importance of grains and vegetables in a healthy diet, you ate your dinner and still felt hungry and unsatisfied. You go to a new market because the last one was weird and you're definitely normal.)", 80, 90, 50, 150);
+    story.printDialog("(You start shaking after hearing the flapping of wings approaching you.)", 80, 90, 50, 150);
+    story.printDialog("Connie: Hello, "+ userName +"! It's good to see you again. How was the meal that you prepared with carrots and bread?", 80, 90, 50, 150);
+    story.printDialog(userName +": Unfulfilling and boring.", 80, 90, 50, 150);
+    story.printDialog("Connie: Well that's because you didn't finish your plate of healthy food silly!", 80, 90, 50, 150);
+    story.printDialog(userName +": I was still missing things from my plate?", 80, 90, 50, 150);
+    story.printDialog("Connie: Duh. You can't have a balanced meal with only 2 food groups. You were missing fruits and protein on your plate. Would you like to learn more about them?", 80, 90, 50, 150);
+    story.printDialog(userName +": No, I think I can just go home and look it up. Thanks tho...", 80, 90, 50, 150);
+    story.printDialog("Connie: Proteins or fruit "+ userName +".", 80, 90, 50, 150);
+    story.printDialog(userName +": I kinda just want to go home. I'm not even hungry.", 80, 90, 50, 150);
+    story.printDialog("(You start to notice weird stares from the people around you in the market.)", 80, 90, 50, 150);
+    story.printDialog("Connie: Proteins or fruit?", 80, 90, 50, 150);
+    story.showPlayerChoices("Protein", "Fruit");
+    if(story.checkLastAnswer("Protein")) {
+        proteinChoice(true);
+        fruitChoice(false);
+    } else {
+        fruitChoice(true);
+        proteinChoice(false);
+    }
+    story.printDialog("Connie: Now with your new knowledge of 2 new food groups, you can make a balanced plate of food!", 80, 90, 50, 150);
+    story.printDialog(userName +": If I buy more food do I get to leave?", 80, 90, 50, 150);
+    story.printDialog("Connie: Yes!", 80, 90, 50, 150);
+    story.printDialog("(You buy assorted veggies, a loaf of bread, ham, and an apple and notice that the cashier is looking at you like you're crazy. You're definitely not crazy though.)", 80, 90, 50, 150);
 }
 
 function makeDay3() {
-
+    scene.setBackgroundImage(assets.image`moon`);
+    story.printDialog("Your last meal was delicious and felt extremely satisfying. You feel healthier and more energized, but you can't help the feeling there was something you're still missing… You go to a new market in hopes to escape Connie and her wacky friends.", 80, 90, 50, 150);
+    story.printDialog(userName +": I seemingly ate all the food groups? Why do I feel like there's still something missing...", 80, 90, 50, 150);
+    story.printDialog("(The hairs on your skin stand up as you start hearing the flapping of wings again. When will you escape the tiny bat's grasp? You thought you were free when you learned all the major food groups. How much longer must you stay in this never ending cycle?)", 80, 90, 50, 150);
+    story.printDialog("Connie: Grocery shopping again so soon?", 80, 90, 50, 150);
+    story.printDialog(userName +": Yes, I felt like there was something missing in my diet.", 80, 90, 50, 150);
+    story.printDialog("Connie: Because you were.", 80, 90, 50, 150);
+    story.printDialog(userName +": I was? I thought you taught me all the food groups that needed to be on my plate for a healthy and balanced meal?", 80, 90, 50, 150);
+    story.printDialog("Connie: Yes, but what you're missing isn't supposed to be on your plate.", 80, 90, 50, 150);
+    story.printDialog(userName +": What do you mean?", 80, 90, 50, 150);
+    story.printDialog("Connie: You're missing a nice cold glass of milk!", 80, 90, 50, 150);
+    story.printDialog(userName +": Milk?", 80, 90, 50, 150);
+    story.printDialog("Connie: Dairy, more specifically.", 80, 90, 50, 150);
+    story.showPlayerChoices("Is this when milk splashes on my face and tells me about his benefits?", "I'm lactose intolerant");
 }
 
 function menu() {
@@ -110,8 +206,13 @@ let connie: Sprite;
 let userName: string;
 
 menu();
-scene.setBackgroundImage(assets.image`cityscape`);
+scene.setBackgroundImage(assets.image`lilypads`);
+story.printDialog("Day 1", 135, 75, 50, 150);
 makeDay1();
+scene.setBackgroundImage(assets.image`lilypads`);
+story.printDialog("Day 2", 135, 75, 50, 150);
 makeDay2();
+scene.setBackgroundImage(assets.image`lilypads`);
+story.printDialog("Day 3", 135, 75, 50, 150);
 makeDay3();
 
