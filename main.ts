@@ -139,7 +139,7 @@ function dairyChoice() {
 }
 
 function makeDay1() {
-    scene.setBackgroundImage(assets.image`cityscape`);
+    scene.setBackgroundImage(assets.image`forest1`);
     story.printDialog("(You're at your local farmers market that's weirdly in a forest, you need fresh produce for a healthy meal)", 80, 90, 50, 150);
     story.printDialog(userName +": All of these fresh produce options are so confusing... Where do I start with my balanced meal!?", 80, 90, 50, 150);
     story.printDialog("(You hear the flapping of wings approaching)", 80, 90, 50, 150);
