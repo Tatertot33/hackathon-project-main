@@ -123,7 +123,6 @@ function fruitChoice(first: Boolean) {
 }
 
 function dairyChoice() {
-    story.printDialog("Connie: Dairy, more specifically.", 80, 90, 50, 150);
     story.showPlayerChoices("Is this when milk splashes on my face and tells me about his benefits?", "I'm lactose intolerant");
     if (story.checkLastAnswer("Is this when milk splashes on my face and tells me about his benefits?")) {
         story.printDialog("(You notice some weird stares from the people around you. Why do they keep doing that?)", 80, 90, 50, 150);
@@ -206,17 +205,86 @@ function makeDay3() {
     connie.setPosition(80, 45);
     story.printDialog("Connie: Grocery shopping again so soon?", 80, 90, 50, 150);
     story.printDialog(userName +": Yes, I felt like there was something missing in my diet.", 80, 90, 50, 150);
-    story.printDialog("Connie: Because you were.", 80, 90, 50, 150);
-    story.printDialog(userName +": I was? I thought you taught me all the food groups that needed to be on my plate for a healthy and balanced meal?", 80, 90, 50, 150);
-    story.printDialog("Connie: Yes, but what you're missing isn't supposed to be on your plate.", 80, 90, 50, 150);
-    story.printDialog(userName +": What do you mean?", 80, 90, 50, 150);
-    story.printDialog("Connie: You're missing a nice cold glass of milk!", 80, 90, 50, 150);
-    story.printDialog(userName +": Milk?", 80, 90, 50, 150);
+    story.printDialog("???: Eat me.", 80, 90, 50, 150);
+    story.printDialog(userName +": What was that?", 80, 90, 50, 150);
+    story.printDialog("Connie: Don't listen to that "+ userName +".", 80, 90, 50, 150);
+    story.printDialog("(A mysterious figure comes out from behind the moon rock.)", 80, 90, 50, 150);
+    story.printDialog("Connie: I'm warning you, "+ userName +". Do not pay attention to that.", 80, 90, 50, 150);
+    story.showPlayerChoices("Check it out", "Stay by Connie");
+    if(story.checkLastAnswer("Stay by Connie")) {
+        story.printDialog("(A slice of cake emerges from the moon rock. It slowly approaches you and you start to feel a strong tension between Connie and the cake slice.)", 80, 90, 50, 150);
+        cake = sprites.create(assets.image`bigCake`);
+        scaling.scaleToPercent(cake, 150, ScaleDirection.Uniformly, ScaleAnchor.Middle);
+        cake.setPosition(110, 45);
+        connie.setPosition(50, 45);
+        story.printDialog("Cake: Connie.", 80, 90, 50, 150);
+        story.printDialog("Connie: Cake.", 80, 90, 50, 150);
+        story.printDialog("Cake: Eat me.", 80, 90, 50, 150);
+        story.printDialog("Connie: Don't listen to her! Processed sugars are EVIL!", 80, 90, 50, 150);
+        story.printDialog("Cake: We aren't evil, just misunderstood.", 80, 90, 50, 150);
+        story.printDialog("Cake: Eat me, " + userName + "", 80, 90, 50, 150);
+    } else {
+        story.printDialog("Connie: Hey! Where are you going "+ userName +"", 80, 90, 50, 150);
+        sprites.destroy(connie);
+        story.printDialog("(You walk closer to the mysterious figure to find a slice of cake.)", 80, 90, 50, 150);
+        
+        cake = sprites.create(assets.image`bigCake`);
+        scaling.scaleToPercent(cake, 150, ScaleDirection.Uniformly, ScaleAnchor.Middle);
+        cake.setPosition(80, 45);
+        story.printDialog("Cake: Eat me, " + userName + "", 80, 90, 50, 150);
+        story.printDialog("(You hear frantic flapping catching up to you)", 80, 90, 50, 150);
+    }
+    story.showPlayerChoices("How do you know my name?", "Well I am craving a sweet treat")
+    sprites.destroy(connie);
+    connie = sprites.create(assets.image`forestBat`);
+    scaling.scaleToPercent(connie, 200, ScaleDirection.Uniformly, ScaleAnchor.Middle);
+    connie.setPosition(50, 45);
+    cake.setPosition(110, 45);
+    if(story.checkLastAnswer("Well I am craving a sweet treat")) {
+        story.printDialog("Connie: NO! DON'T! I know what you're missing from your plate!", 80, 90, 50, 150);
+        story.printDialog(userName +": You, you do?", 80, 90, 50, 150);
+    } else {
+        story.printDialog("Cake: Don't worry about the small details, just eat me before-", 80, 90, 50, 150);
+        story.printDialog("Connie: Don't eat that " + userName + "! Processed sugars ARE BAD!", 80, 90, 50, 150);
+        story.printDialog("Cake: Don't listen to her " + userName + ". We aren't that bad", 80, 90, 50, 150);
+        story.printDialog("Connie: Eating processed sugars regularly can lead to weight gain and diabetes! Weight gain then causes a plethora of other health issues like high blood pressure and inflammation!", 80, 90, 50, 150);
+        story.printDialog(userName + ": Maybe sugar was what I was missing from my diet, maybe that's why I feel so incomplete...", 80, 90, 50, 150);
+        story.printDialog("Cake: Yes.. YES!", 80, 90, 50, 150);
+        story.printDialog("Connie: No! Fruits provide natural sugars that your body absorbs at a slower rate than refined sugars which doesn't cause a spike in blood sugar levels. You weren't missing sugar, I know what you were missing!", 80, 90, 50, 150);
+    }
+    story.printDialog("Connie: It was dairy!", 80, 90, 50, 150);
+    sprites.destroy(cake);
+    connie.setPosition(80, 45);
     dairyChoice();
+    cake = sprites.create(assets.image`bigCake`);
+    scaling.scaleToPercent(cake, 150, ScaleDirection.Uniformly, ScaleAnchor.Middle);
+    cake.setPosition(110, 45);
+    connie.setPosition(50, 45);
+    story.printDialog("Connie: Now with your new knowledge on dairy, do you still want to eat Cake?", 80, 90, 50, 150);
+    story.printDialog("Cake: Yes you do! Don't ruin this for me Connie.", 80, 90, 50, 150);
+    story.showPlayerChoices("Yes, I want to eat Cake", "No, I want to live a balanced and healthy lifestyle");
+    if(story.checkLastAnswer("Yes, I want to eat Cake")) {
+        story.printDialog("Connie: You're making a mistake, "+ userName +".", 80, 90, 50, 150);
+        story.printDialog("Cake: No you're not! Come, forth and EAT ME!", 80, 90, 50, 150);
+        sprites.destroy(connie);
+        sprites.destroy(cake);
+        scene.setBackgroundImage(assets.image`dark2`);
+        story.setPagePauseLength(5000, 5000);
+        story.printDialog("You walk closer to Cake and pick her up. You start to eat her. As you're eating, more and more unhealthy sweet and processed treats emerge to greet you and in turn, you eat them. You lead an unhealthy life and die after not getting your proper nutrition needs met.", 80, 101, 200, 150);
+        game.setGameOverMessage(true, "Bad Ending")
+        game.gameOver(true)
+        credits();
+        game.reset();
+    }
+    story.printDialog("Cake: NOOOO!!!! YOU HAVEN'T HEARD THE LAST OF ME!!!", 80, 90, 50, 150);
+    scaling.scaleToPercent(cake, 75, ScaleDirection.Uniformly, ScaleAnchor.Middle);
+    story.printDialog("Cake shrinks and disappears.", 80, 90, 50, 150);
+    sprites.destroy(cake);
+    connie.setPosition(80, 45);
+    story.printDialog("Connie: Good riddance.", 80, 90, 50, 150);
     story.printDialog(userName +": Connie, how do I make a balanced meal with all food groups?", 80, 90, 50, 150);
     story.printDialog("Connie: I'm glad you asked. Let's get all of our food friends out here!", 80, 90, 50, 150);
     sprites.destroy(connie);
-
     carrot = sprites.create(assets.image`carrot`);
     scaling.scaleToPercent(carrot, 200, ScaleDirection.Uniformly, ScaleAnchor.Middle);
     carrot.setPosition(30, 45);
@@ -259,9 +327,18 @@ function makeDay3() {
     scene.setBackgroundImage(assets.image`flash`);
     story.setPagePauseLength(5000, 5000);
     story.printDialog("You grab the burger and eat it. You are enlightened, finally eating every food group needed for a balanced and healthy diet in one bite. The vitamins and minerals course through your veins and you reach your full potential. Finally, you wake up in an all white room, alone.", 80, 101, 200, 150);
+    game.setGameOverMessage(true, "The End!")
+    game.gameOver(true)
+    credits();
+    game.reset();
+}
+
+function credits() {
+    game.showLongText("Thank you for playing A Day at the Market.This game was brought to you by Team Flower Power: Michael, Kimmy, Joselyn. Special thanks to our amazing, talented, wonderful, intelligent, gracious, and beautiful judges: Dr.Hao Wang, Andrew Webb, Mahmood Jasim, Nash Mahmoud. Disclaimer: we are not dieticians. Cake is good and should be enjoyed in moderation.", DialogLayout.Full)
 }
 
 function menu() {
+    story.setPagePauseLength(1000, 1000);
     scene.setBackgroundImage(assets.image`lilypads`);
     game.splash("Day at the Farmer's Market", "Learning to eat healthy!");
     music.stopAllSounds()
@@ -269,6 +346,7 @@ function menu() {
 }
 
 let burger: Sprite;
+let cake: Sprite;
 let carrot: Sprite;
 let bread: Sprite;
 let apple: Sprite;
@@ -276,7 +354,7 @@ let ham: Sprite;
 let connie: Sprite;
 let userName: string;
 
-music.play(music.stringPlayable("C5 A B A G A B G ", 120), music.PlaybackMode.LoopingInBackground)
+music.play(music.stringPlayable("G B A G C5 B A B ", 110), music.PlaybackMode.LoopingInBackground)
 menu();
 scene.setBackgroundImage(assets.image`lilypads`);
 music.play(music.stringPlayable("G B A G C5 B A B ", 110), music.PlaybackMode.UntilDone)
@@ -290,4 +368,3 @@ scene.setBackgroundImage(assets.image`lilypads`);
 music.play(music.stringPlayable("G B A G C5 B A B ", 110), music.PlaybackMode.UntilDone)
 story.printDialog("Day 3", 135, 75, 50, 150);
 makeDay3();
-
