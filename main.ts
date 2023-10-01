@@ -271,9 +271,9 @@ function makeDay3() {
         scene.setBackgroundImage(assets.image`dark2`);
         story.setPagePauseLength(5000, 5000);
         story.printDialog("You walk closer to Cake and pick her up. You start to eat her. As you're eating, more and more unhealthy sweet and processed treats emerge to greet you and in turn, you eat them. You lead an unhealthy life and die after not getting your proper nutrition needs met.", 80, 101, 200, 150);
+        credits();
         game.setGameOverMessage(true, "Bad Ending")
         game.gameOver(true)
-        credits();
         game.reset();
     }
     story.printDialog("Cake: NOOOO!!!! YOU HAVEN'T HEARD THE LAST OF ME!!!", 80, 90, 50, 150);
@@ -327,9 +327,9 @@ function makeDay3() {
     scene.setBackgroundImage(assets.image`flash`);
     story.setPagePauseLength(5000, 5000);
     story.printDialog("You grab the burger and eat it. You are enlightened, finally eating every food group needed for a balanced and healthy diet in one bite. The vitamins and minerals course through your veins and you reach your full potential. Finally, you wake up in an all white room, alone.", 80, 101, 200, 150);
+    credits();
     game.setGameOverMessage(true, "The End!")
     game.gameOver(true)
-    credits();
     game.reset();
 }
 
